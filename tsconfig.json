@@ -15,7 +15,8 @@
     "**/__mocks__/**/*",
     "**/tests/**/*",
     "**/index.ts",
-    "jest.config.js"
+    "jest.config.js",
+    "gatsby-*.ts"
   ],
   "compilerOptions": {
     "jsx": "react",
