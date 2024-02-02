@@ -1,56 +1,50 @@
-/** @type {import('@types/eslint').Linter.BaseConfig} */
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es6: true,
-    node: true
-  },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    settings: {
-      'import/resolver': {
-        typescript: {
-          directory: '**/tsconfig.json'
-        }
-      },
-      react: {
-        version: 'detect'
-      },
-      // we're using vitest which has a very similar API to jest
-      // (so the linting plugins work nicely), but it means we have to explicitly
-      // set the jest version.
-      jest: {
-        version: 28
+  ignorePatterns: ['**/public/**', '**/.cache/**', '**/static/**', '**/content/**'],
+  extends: [
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:testing-library/react',
+    'prettier',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb/hooks',
+    'airbnb'
+  ],
+  plugins: ['import'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
     }
   },
-  plugins: ['@typescript-eslint', 'prettier', 'jsx-a11y'],
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json', '**/tsconfig.json']
+  },
   rules: {
     'arrow-body-style': ['error', 'as-needed'],
-    'jsx-a11y/label-has-for': 0,
-    'jsx-a11y/no-noninteractive-element-interactions': 0,
-    'jsx-a11y/no-onchange': 0,
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'prettier/prettier': 'off',
     eqeqeq: ['error', 'always', { null: 'ignore' }],
-    'import/extensions': 'off',
-    'import/export': 'off',
-    'import/named': 'off',
-    'import/namespace': 'off',
-    'import/no-deprecated': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'import/no-cycle': 'off',
-    'import/no-named-as-default-member': 'off',
-    'import/no-named-as-default': 'off',
-    'import/no-self-import': 'off',
-    'import/default': 'off',
-    'import/no-duplicates': 'off',
-    'import/no-unresolved': 'off',
-    'import/order': 'off',
-    'one-var': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
     'no-unexpected-multiline': 'error',
     'prefer-const': 'error',
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function'
+      }
+    ],
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
     '@typescript-eslint/ban-types': 'error',
@@ -65,7 +59,23 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.tsx'],
+      files: ['**/*.ts', '**/*.tsx'],
+      env: {
+        browser: true,
+        es6: true
+      },
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', '**/tsconfig.json']
+      },
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'airbnb-typescript',
+        'prettier'
+      ],
+      plugins: ['@typescript-eslint', 'react', 'react-hooks', 'testing-library', 'graphql', 'prettier'],
       rules: {
         'react/jsx-filename-extension': [
           'warn',
@@ -76,12 +86,41 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
         'react/prop-types': 'off'
       }
+    },
+    {
+      files: ['**/*.js', '**/*.jsx'],
+      env: {
+        browser: true,
+        es6: true
+      },
+      extends: ['prettier'],
+      rules: {},
+      plugins: ['testing-library', 'react', 'react-hooks', 'graphql', 'prettier']
+    },
+    {
+      files: ['**/tests/**', '**/__mocks__/**', '*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx'],
+      extends: ['plugin:jest/all', 'plugin:jest-dom/recommended'],
+      plugins: ['jest', 'jest-dom'],
+      env: {
+        browser: true,
+        es6: true,
+        'jest/globals': true
+      },
+      rules: {
+        'jest/no-hooks': 'off',
+        '@typescript-eslint/unbound-method': 'off',
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+            optionalDependencies: false,
+            peerDependencies: false
+          }
+        ],
+        'import/no-relative-packages': 'off',
+        'jest/no-conditional-in-test': 'off',
+        'jest/prefer-snapshot-hint': 'off'
+      }
     }
-  ],
-  extends: [
-    'prettier',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:import/typescript'
   ]
 }
