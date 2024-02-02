@@ -1,0 +1,60 @@
+{
+  "name": "zachdonnelly.com",
+  "version": "1.0.0",
+  "description": "Portfolio website for Zach Donnelly<mail@zachdonnelly.com>",
+  "author": "Zach Donnelly<mail@zachdonnelly.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZacharyDonnelly/Portfolio_Website"
+  },
+  "private": true,
+  "license": "MIT",
+  "browserslist": "> 0.25%, not dead",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "gatsby": "^5.13.2",
+    "gatsby-plugin-google-gtag": "^5.13.1",
+    "gatsby-plugin-image": "^3.13.1",
+    "gatsby-plugin-manifest": "^5.13.1",
+    "gatsby-plugin-netlify-cms": "^7.12.1",
+    "gatsby-plugin-sass": "^6.13.1",
+    "gatsby-plugin-sharp": "^5.13.1",
+    "gatsby-plugin-sitemap": "^6.13.1",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gatsby-transformer-remark": "^6.13.1",
+    "gatsby-transformer-sharp": "^5.13.1",
+    "netlify-cms-app": "^2.15.72",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.70.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.1",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ]
+  }
+}
