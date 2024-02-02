@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import Homepage from "./";
+import Homepage from ".";
 
 describe("example page", () => {
   it("renders without errors", async () => {
