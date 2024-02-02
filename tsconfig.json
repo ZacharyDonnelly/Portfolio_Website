@@ -14,7 +14,6 @@
     "**/src/**/*",
     "**/__mocks__/**/*",
     "**/tests/**/*",
-    "**/index.ts",
     "jest.config.js",
     "gatsby-*.ts"
   ],

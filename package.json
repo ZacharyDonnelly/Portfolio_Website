@@ -23,7 +23,7 @@
     "clean": "rm -rf public && rm -rf .cache",
     "lint:js": "eslint --ext .ts,.tsx,.js,.jsx .",
     "lint:deadcode": "ts-prune -i '(test|gatsby)'",
-    "lint:styles": "stylelint src/**/*.{js,jsx,ts,tsx,css}",
+    "lint:styles": "stylelint src/**/*.{scss,css}",
     "lint:md": "markdownlint-cli2 content/**/*.{md,mdx}",
     "lint:format": "prettier --check '**/*.{js,jsx,ts,tsx,css}'",
     "lint:all": "npm run lint:js && npm run lint:styles && npm run lint:format && npm run lint:md",

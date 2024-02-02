@@ -1,5 +1,5 @@
 module.exports = {
-  ignorePatterns: ['**/public/**', '**/.cache/**', '**/static/**', '**/content/**'],
+  ignorePatterns: ['**/public/**', '**/.cache/**', '**/static/**', '**/content/**', '**/coverage/**'],
   extends: [
     'plugin:import/recommended',
     'plugin:import/typescript',
@@ -10,16 +10,17 @@ module.exports = {
     'airbnb'
   ],
   plugins: ['import'],
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json', '**/tsconfig.json']
+  },
   settings: {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
     }
-  },
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', '**/tsconfig.json']
   },
   rules: {
     'arrow-body-style': ['error', 'as-needed'],
@@ -63,11 +64,6 @@ module.exports = {
       env: {
         browser: true,
         es6: true
-      },
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ['./tsconfig.json', '**/tsconfig.json']
       },
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
