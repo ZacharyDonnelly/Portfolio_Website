@@ -1,8 +1,11 @@
 import * as React from 'react'
+import Hero from '../components/Hero'
+import '../styles/index.scss'
 
 const Homepage: React.FC = () => (
-  <div>
-    <h1>Hello World</h1>
-  </div>
+  <section>
+    <div className="hero_border" />
+    <Hero />
+  </section>
 )
 export default Homepage
