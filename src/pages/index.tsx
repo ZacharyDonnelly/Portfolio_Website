@@ -4,6 +4,7 @@ import '../styles/index.scss'
 
 const Homepage: React.FC = () => (
   <section>
+    <div className="hero_border" />
     <Hero />
   </section>
 )

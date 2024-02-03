@@ -36,3 +36,13 @@ body {
   border: 0.3rem solid $navy;
   border-radius: 1rem;
 }
+
+.hero_border {
+  position: absolute;
+  height: 82rem;
+  width: 180rem;
+  border: 1.2rem solid $navy;
+  z-index: 10;
+  display: flex;
+  margin-left: calc(50% - 90rem);
+}

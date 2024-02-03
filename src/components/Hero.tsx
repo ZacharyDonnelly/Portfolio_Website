@@ -7,11 +7,10 @@ const Hero: React.FC = () => (
     <StaticImage
       style={{
         gridArea: '1/1',
-        width: '1750px',
-        height: '100vh'
+        width: '1800px',
+        height: '95.5vh'
       }}
       layout="fullWidth"
-      // This is a presentational image, so the alt should be an empty string
       alt=""
       src="../images/hero_4k.webp"
       formats={['auto', 'webp', 'avif']}
@@ -19,11 +18,11 @@ const Hero: React.FC = () => (
     <div
       className="homepage_heroText"
       style={{
-        gridArea: '1/1'
+        gridArea: '1/1',
+        alignContent: 'center'
       }}
     >
-      {/* Any content here will be centered in the component */}
-      <h1>Hero text</h1>
+      <h1>Zach Donnelly</h1>
     </div>
   </div>
 )
